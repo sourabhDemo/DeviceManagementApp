@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>My Devices</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group *ngFor="let item of items | nestedgroupBy:'device.devicecategory' ">
+    <ion-item-divider color="light">
+      {{item.key}}
+    </ion-item-divider>
+
+    <ion-list>
+    <ion-item-sliding *ngFor="let val of item.value ">
+
+      <ion-item>
+        <ion-icon [name]="val.device.icon" item-left></ion-icon>
+        <div class="item-note">
+          {{val.device.devicename}}
+        </div>
+        <h3>
+          <b>Device Id :</b> {{val.device.deviceId}} <br/></h3> <br/>
+        <h3 *ngFor="let currentassigned of val.currentstatus">
+          <b> Assigned To :</b> {{currentassigned.currentuser.username}} <br/>
+          <b>Assigned On :</b> {{currentassigned.assignedon}}
+        </h3>
+      </ion-item>
+
+      <ion-item-options side="left">
+        <button ion-button color="primary" (click)="deviceHistory(val.device._id)">
+          <ion-icon name="apps"></ion-icon>
+          History
+        </button>
+        <button ion-button color="secondary" (click)="assignDevice(val.device._id)">
+          <ion-icon name="contact"></ion-icon>
+          Assign
+        </button>
+      </ion-item-options>
+
+
+    </ion-item-sliding>
+  </ion-list>
+
+  </ion-item-group>
+</ion-content>

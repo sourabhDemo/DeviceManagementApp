@@ -1,0 +1,40 @@
+<!--
+  Generated template for the PendingacceptancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>My Pending Approval</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let item of items">
+    <ion-card-header>
+      Device Id : {{item.device.deviceId}} <br/> Device Name : {{item.device.devicename}}
+    </ion-card-header>
+    <ion-card-content>
+      You have been assigned this device by {{item.whoassigned.username}} <br/><br/>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Comments</ion-label>
+          <ion-input type="text" [(ngModel)]="item.comment"></ion-input>
+        </ion-item>
+      </ion-list>
+      <br/><br/>
+      <button ion-button color="secondary" outline (click)="acceptApproval(item)">Accept</button>
+      <button ion-button color="danger" outline (click)="rejectApproval(item)">Reject</button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

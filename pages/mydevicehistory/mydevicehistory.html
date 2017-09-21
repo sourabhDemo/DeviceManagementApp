@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>My Device History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<!-- <ion-content padding>
+  <ion-list>
+    <h4 *ngFor="let currentassigned of items">
+      Device Id: {{currentassigned.device.deviceId}}<br/> 
+      Device Name: {{currentassigned.device.devicename}}<br/> 
+      Device Category: {{currentassigned.device.devicecategory}}<br/>
+
+      <ol>
+        <li *ngFor="let current of currentassigned.currentstatus">
+          <b> Assigned To :</b> {{current.currentuser.username}} <br/>
+          <b>Assigned On :</b> {{current.assignedon}}
+          <br/><br/>
+        </li>
+      </ol>
+
+    </h4>
+  </ion-list>
+</ion-content> -->
+<ion-content padding>
+  <ion-card *ngFor="let currentassigned of items">
+    <ion-card-header>
+      Device Id: {{currentassigned.device.deviceId}}<br/> Device Name: {{currentassigned.device.devicename}}<br/> Device
+      Category: {{currentassigned.device.devicecategory}}<br/>
+    </ion-card-header>
+    <ol>
+      <li *ngFor="let current of currentassigned.currentstatus">
+        <ion-list>
+          <b> Assigned To :</b> {{current.currentuser.username}} <br/>
+          <b>Assigned On :</b> {{current.assignedon}}
+          <br/> <br/>
+        </ion-list>
+      </li>
+    </ol>
+  </ion-card>
+</ion-content>
